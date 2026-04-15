@@ -11,7 +11,16 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    install_requires=[
+        'setuptools',
+        'numpy',
+        'soundfile',
+        'sounddevice',
+        'torch',
+        'silero-vad',
+        'faster-whisper',
+        'requests',
+    ],
     zip_safe=True,
     maintainer='Your Name',
     maintainer_email='you@example.com',
@@ -26,6 +35,8 @@ setup(
             'mic_node = vad_component.mic_node:main',
             # VAD node (uses Silero VAD to detect speech)
             'vad_node = vad_component.vad_node:main',
+            # Speech segmentation node (saves speech segments to .wav files)
+            'speech_segmentation_node = vad_component.speech_segmentation_node:main',
         ],
     },
 )
